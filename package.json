@@ -1,0 +1,13 @@
+{
+  "name": "create-se2-app",
+  "version": "0.0.1",
+  "description": "Creates a SE-2 app",
+  "bin": "src/cli.js",
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "simple-git": "^3.17.0"
+  },
+  "packageManager": "yarn@3.5.0"
+}
