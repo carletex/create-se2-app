@@ -1,26 +1,35 @@
 #! /usr/bin/env node
-import { simpleGit, CleanOptions } from "simple-git";
 import chalk from "chalk";
+import inquirer from "inquirer";
+import { simpleGit, CleanOptions } from "simple-git";
 
+const repoUrl = "https://github.com/carletex/se-2/";
 const git = simpleGit().clean(CleanOptions.FORCE);
-
-const repoUrl = "https://github.com/scaffold-eth/se-2/";
-
-// ToDo. Get from command line (use commander)
-const directory = "/home/carletex/repo";
 
 // ToDo. Check NodeJS version >= 18
 // ToDo. Check that yarn is installed
 
-try {
+inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "directory",
+      message: "In which directory do you want to install SE-2?",
+      default: "se-2",
+    },
+  ])
+  .then(async (answers) => {
+    const directory = answers.directory;
+
+    // ToDo. Spinner
+    console.log(chalk.green(`Cloning SE2 to ${directory}...`));
     await git.clone(repoUrl, directory);
     console.log(chalk.green(`Repository cloned to ${directory}`));
-} catch (err) {
-    console.error(chalk.red(err));
-    process.exit(1);
-}
-
-// const simpleGit = require('simple-git');
-// const { spawn } = require('child_process');
-// const chalk = require('chalk');
-// const program = require('commander');
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      console.error("Prompt couldn't be rendered in the current environment");
+    } else {
+      console.error("CLI Error:", error);
+    }
+  });
