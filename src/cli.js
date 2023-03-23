@@ -22,9 +22,9 @@ inquirer
     const directory = answers.directory;
 
     // ToDo. Spinner
-    console.log(chalk.green(`Cloning SE2 to ${directory}...`));
+    console.log(chalk.green(`⚡ Cloning SE2 to «${directory}»...`));
     await git.clone(repoUrl, directory);
-    console.log(chalk.green(`Repository cloned to ${directory}`));
+    console.log(chalk.green(`💥 Repository cloned to «${directory}»`));
   })
   .catch((error) => {
     if (error.isTtyError) {
