@@ -1,6 +1,6 @@
 {
   "name": "create-se2-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Creates a SE-2 app",
   "bin": {
     "create-se-2": "src/cli.js"
