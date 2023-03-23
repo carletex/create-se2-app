@@ -2,7 +2,9 @@
   "name": "create-se2-app",
   "version": "0.0.1",
   "description": "Creates a SE-2 app",
-  "bin": "src/cli.js",
+  "bin": {
+    "create-se-2": "src/cli.js"
+  },
   "type": "module",
   "dependencies": {
     "chalk": "^5.2.0",
